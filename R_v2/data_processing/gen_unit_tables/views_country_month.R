@@ -1,0 +1,201 @@
+library(dplyr)
+library(demutils)
+
+db <- pg_connect()
+
+views_cm_01_22 <- read_datasets("views_cm_01_22", db)
+views_cm_02_22 <- read_datasets("views_cm_02_22", db)
+views_cm_03_22 <- read_datasets("views_cm_03_22", db)
+views_cm_04_22 <- read_datasets("views_cm_04_22", db)
+views_cm_05_22 <- read_datasets("views_cm_05_22", db)
+views_cm_06_22 <- read_datasets("views_cm_06_22", db)
+views_cm_07_22 <- read_datasets("views_cm_07_22", db)
+views_cm_08_22 <- read_datasets("views_cm_08_22", db)
+views_cm_09_22 <- read_datasets("views_cm_09_22", db)
+views_cm_10_22 <- read_datasets("views_cm_10_22", db)
+views_cm_11_22 <- read_datasets("views_cm_11_22", db)
+views_cm_12_22 <- read_datasets("views_cm_12_22", db)
+views_cm_01_23 <- read_datasets("views_cm_01_23", db)
+views_cm_02_23 <- read_datasets("views_cm_02_23", db)
+views_cm_03_23 <- read_datasets("views_cm_03_23", db)
+views_cm_04_23 <- read_datasets("views_cm_04_23", db)
+views_cm_05_23 <- read_datasets("views_cm_05_23", db)
+views_cm_06_23 <- read_datasets("views_cm_06_23", db)
+views_cm_07_23 <- read_datasets("views_cm_07_23", db)
+views_cm_08_23 <- read_datasets("views_cm_08_23", db)
+
+
+# Select unit columns for unit table
+u_views_country_month <- 
+  bind_rows(
+    select(views_cm_01_22, 
+           u_views_country_month_country_id,
+           u_views_country_month_month_id,
+           u_views_country_month_month,
+           u_views_country_month_year,
+           u_views_country_month_isoab,
+           u_views_country_month_gwcode,
+           u_views_country_month_name),
+    select(views_cm_02_22, 
+           u_views_country_month_country_id,
+           u_views_country_month_month_id,
+           u_views_country_month_month,
+           u_views_country_month_year,
+           u_views_country_month_isoab,
+           u_views_country_month_gwcode,
+           u_views_country_month_name),
+    select(views_cm_03_22, 
+           u_views_country_month_country_id,
+           u_views_country_month_month_id,
+           u_views_country_month_month,
+           u_views_country_month_year,
+           u_views_country_month_isoab,
+           u_views_country_month_gwcode,
+           u_views_country_month_name),
+    select(views_cm_04_22, 
+           u_views_country_month_country_id,
+           u_views_country_month_month_id,
+           u_views_country_month_month,
+           u_views_country_month_year,
+           u_views_country_month_isoab,
+           u_views_country_month_gwcode,
+           u_views_country_month_name),
+    select(views_cm_05_22, 
+           u_views_country_month_country_id,
+           u_views_country_month_month_id,
+           u_views_country_month_month,
+           u_views_country_month_year,
+           u_views_country_month_isoab,
+           u_views_country_month_gwcode,
+           u_views_country_month_name),
+    select(views_cm_06_22, 
+           u_views_country_month_country_id,
+           u_views_country_month_month_id,
+           u_views_country_month_month,
+           u_views_country_month_year,
+           u_views_country_month_isoab,
+           u_views_country_month_gwcode,
+           u_views_country_month_name),
+    select(views_cm_07_22, 
+           u_views_country_month_country_id,
+           u_views_country_month_month_id,
+           u_views_country_month_month,
+           u_views_country_month_year,
+           u_views_country_month_isoab,
+           u_views_country_month_gwcode,
+           u_views_country_month_name),
+    select(views_cm_08_22, 
+           u_views_country_month_country_id,
+           u_views_country_month_month_id,
+           u_views_country_month_month,
+           u_views_country_month_year,
+           u_views_country_month_isoab,
+           u_views_country_month_gwcode,
+           u_views_country_month_name),
+    select(views_cm_09_22, 
+           u_views_country_month_country_id,
+           u_views_country_month_month_id,
+           u_views_country_month_month,
+           u_views_country_month_year,
+           u_views_country_month_isoab,
+           u_views_country_month_gwcode,
+           u_views_country_month_name),
+    select(views_cm_10_22, 
+           u_views_country_month_country_id,
+           u_views_country_month_month_id,
+           u_views_country_month_month,
+           u_views_country_month_year,
+           u_views_country_month_isoab,
+           u_views_country_month_gwcode,
+           u_views_country_month_name),
+    select(views_cm_11_22, 
+           u_views_country_month_country_id,
+           u_views_country_month_month_id,
+           u_views_country_month_month,
+           u_views_country_month_year,
+           u_views_country_month_isoab,
+           u_views_country_month_gwcode,
+           u_views_country_month_name),
+    select(views_cm_12_22, 
+           u_views_country_month_country_id,
+           u_views_country_month_month_id,
+           u_views_country_month_month,
+           u_views_country_month_year,
+           u_views_country_month_isoab,
+           u_views_country_month_gwcode,
+           u_views_country_month_name),
+    select(views_cm_01_23, 
+           u_views_country_month_country_id,
+           u_views_country_month_month_id,
+           u_views_country_month_month,
+           u_views_country_month_year,
+           u_views_country_month_isoab,
+           u_views_country_month_gwcode,
+           u_views_country_month_name),
+    select(views_cm_02_23, 
+           u_views_country_month_country_id,
+           u_views_country_month_month_id,
+           u_views_country_month_month,
+           u_views_country_month_year,
+           u_views_country_month_isoab,
+           u_views_country_month_gwcode,
+           u_views_country_month_name),
+    select(views_cm_03_23, 
+           u_views_country_month_country_id,
+           u_views_country_month_month_id,
+           u_views_country_month_month,
+           u_views_country_month_year,
+           u_views_country_month_isoab,
+           u_views_country_month_gwcode,
+           u_views_country_month_name),
+    select(views_cm_04_23, 
+           u_views_country_month_country_id,
+           u_views_country_month_month_id,
+           u_views_country_month_month,
+           u_views_country_month_year,
+           u_views_country_month_isoab,
+           u_views_country_month_gwcode,
+           u_views_country_month_name),
+    select(views_cm_05_23, 
+           u_views_country_month_country_id,
+           u_views_country_month_month_id,
+           u_views_country_month_month,
+           u_views_country_month_year,
+           u_views_country_month_isoab,
+           u_views_country_month_gwcode,
+           u_views_country_month_name),
+    select(views_cm_06_23, 
+           u_views_country_month_country_id,
+           u_views_country_month_month_id,
+           u_views_country_month_month,
+           u_views_country_month_year,
+           u_views_country_month_isoab,
+           u_views_country_month_gwcode,
+           u_views_country_month_name),
+    select(views_cm_07_23, 
+           u_views_country_month_country_id,
+           u_views_country_month_month_id,
+           u_views_country_month_month,
+           u_views_country_month_year,
+           u_views_country_month_isoab,
+           u_views_country_month_gwcode,
+           u_views_country_month_name),
+    select(views_cm_08_23, 
+           u_views_country_month_country_id,
+           u_views_country_month_month_id,
+           u_views_country_month_month,
+           u_views_country_month_year,
+           u_views_country_month_isoab,
+           u_views_country_month_gwcode,
+           u_views_country_month_name)
+    ) %>%
+  distinct(.) %>%
+  arrange(u_views_country_month_month_id,
+          u_views_country_month_country_id)
+
+stopifnot("There are missing values in the unit columns." = !any(is.na(u_views_country_month)))
+
+# Save unit table
+write_unit_table(u_views_country_month, 
+                 file.path(Sys.getenv("UNIT_TABLE_PATH"), "u_views_country_month.rds"),
+                 tag = "u_views_country_month")
