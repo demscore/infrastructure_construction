@@ -1,0 +1,39 @@
+#!/usr/bin/env Rscript
+
+suppressMessages(library(whisker))
+suppressMessages(library(dplyr))
+suppressMessages(library(demutils))
+
+db <- pg_connect()
+
+VERSION_NR <- Sys.getenv("DEMSCORE_RELEASE")
+
+#Make sure refs are prepped so the argument can be set to FALSE in the loop ----
+args <- list(help = FALSE,
+             include_unit_cols = TRUE, 
+             file_format = "CSV",
+             outfile = paste0("~/data/demscore_next_release/zip/codebooks/hdata_fomin_codebook.pdf"),
+             dataset = "hdata_fomin")
+
+create_codebook(args, REF_STATIC_DIR, POSTGRES_TABLES_DIR, LOCAL, prep = TRUE)
+
+## Loop over datasets ----------------------------------------------------------
+datasets <- DBI::dbGetQuery(db, "SELECT * FROM datasets;") %>% 
+  filter(demscore_release == VERSION_NR) %>%
+  arrange(tag)
+
+tags <- datasets$tag
+
+# Codebook for a specific dataset
+for (i in tags) {
+  print(i)
+  
+  args <- list(help = FALSE,
+               include_unit_cols = TRUE, 
+               file_format = "CSV",
+               outfile = paste0("~/data/demscore_next_release/zip/codebooks/", i, "_codebook.pdf"),
+               dataset = i)
+  
+  create_codebook(args, REF_STATIC_DIR, POSTGRES_TABLES_DIR, LOCAL, prep = FALSE)
+  
+}
