@@ -12,13 +12,13 @@ i.e., task, within this module.
 
 Scripts in the directories
 
-* item dataset_cleaning
-* item gen_unit_tables and
+* dataset_cleaning
+* gen_unit_tables and
 
 as well as the scripts 
 
-* item gen_primary_data and 
-* item gen_secondary_data
+* gen_primary_data and 
+* gen_secondary_data
 
 are the heart of the Demscore Data Processing pipeline. These steps are the most 
 essential ones for every update, as they are required for the download interface 
